@@ -28,7 +28,7 @@ const zh = {
   "label.description": "描述",
   "label.details": "详情",
   "label.examples": "示例",
-  "label.headers": "请求头：",
+  "label.headers": "标头：",
   "label.links": "链接",
   "label.media_type": "媒体类型",
   "label.models": "模型",

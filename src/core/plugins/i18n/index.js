@@ -5,7 +5,7 @@ import reducers from "./reducers"
 import * as actions from "./actions"
 import * as selectors from "./selectors"
 import en from "./locales/en"
-import builtinLocales from "./locales/index"
+import builtinLocales from "./locales"
 import win from "core/window"
 
 export default function I18nPlugin() {

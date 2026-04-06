@@ -16,16 +16,17 @@ import en from "./locales/en"
  * @returns {string}
  */
 export function translate(localeMsgs, fallbackMsgs, key, vars) {
+  const own = Object.prototype.hasOwnProperty
   const raw =
-    localeMsgs && key in localeMsgs
+    localeMsgs && own.call(localeMsgs, key)
       ? localeMsgs[key]
-      : fallbackMsgs && key in fallbackMsgs
+      : fallbackMsgs && own.call(fallbackMsgs, key)
         ? fallbackMsgs[key]
         : key
 
-  if (!vars) return raw
+  if (!vars) return String(raw)
   return String(raw).replace(/\{\{(\w+)\}\}/g, (_, k) =>
-    k in vars ? String(vars[k]) : `{{${k}}}`
+    own.call(vars, k) ? String(vars[k]) : `{{${k}}}`
   )
 }
 

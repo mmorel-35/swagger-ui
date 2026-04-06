@@ -1,7 +1,7 @@
 /**
  * @prettier
  */
-import { translate } from "core/plugins/i18n/fn"
+import { translate, fallbackT } from "core/plugins/i18n/fn"
 
 describe("i18n fn - translate", () => {
   const enMessages = {
@@ -37,6 +37,18 @@ describe("i18n fn - translate", () => {
     it("handles null fallbackMsgs gracefully by returning the key", () => {
       expect(translate(null, null, "button.cancel")).toBe("button.cancel")
     })
+
+    it("always returns a string (consistent return type without vars)", () => {
+      expect(typeof translate(enMessages, enMessages, "button.cancel")).toBe(
+        "string"
+      )
+    })
+
+    it("does not resolve inherited prototype properties as translations", () => {
+      // 'toString' exists on Object.prototype — it must not be treated as a match
+      expect(translate({}, {}, "toString")).toBe("toString")
+      expect(translate(null, {}, "toString")).toBe("toString")
+    })
   })
 
   describe("variable interpolation", () => {
@@ -68,6 +80,12 @@ describe("i18n fn - translate", () => {
       const result = translate(enMessages, enMessages, "button.cancel", null)
       expect(result).toBe("Cancel")
     })
+
+    it("does not use inherited var properties as substitutions", () => {
+      // vars inheriting toString from Object.prototype must not substitute {{toString}}
+      const msgs = { msg: "value is {{toString}}" }
+      expect(translate(msgs, {}, "msg", {})).toBe("value is {{toString}}")
+    })
   })
 
   describe("locale override", () => {
@@ -84,5 +102,26 @@ describe("i18n fn - translate", () => {
         "Execute"
       )
     })
+  })
+})
+
+describe("i18n fn - fallbackT", () => {
+  it("returns the English string for a known key", () => {
+    expect(fallbackT("button.execute")).toBe("Execute")
+    expect(fallbackT("button.cancel")).toBe("Cancel")
+    expect(fallbackT("button.authorize")).toBe("Authorize")
+  })
+
+  it("returns the raw key for an unknown key", () => {
+    expect(fallbackT("unknown.key")).toBe("unknown.key")
+  })
+
+  it("interpolates variables in English messages", () => {
+    expect(fallbackT("errors.jump_to_line", { line: 7 })).toBe("Jump to line 7")
+  })
+
+  it("always returns a string", () => {
+    expect(typeof fallbackT("button.execute")).toBe("string")
+    expect(typeof fallbackT("nonexistent.key")).toBe("string")
   })
 })

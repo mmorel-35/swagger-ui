@@ -1,7 +1,7 @@
 /**
  * @prettier
  */
-import { Map, fromJS } from "immutable"
+import { Map } from "immutable"
 import { SET_LOCALE, LOAD_MESSAGES } from "./actions"
 
 export default {
@@ -9,6 +9,6 @@ export default {
 
   [LOAD_MESSAGES]: (state, { payload: { locale, messages } }) =>
     state.updateIn(["messages", locale], (existing = Map()) =>
-      existing.merge(fromJS(messages))
+      existing.merge(Map(messages))
     ),
 }
