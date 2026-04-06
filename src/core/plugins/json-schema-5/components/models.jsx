@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import Im, { Map } from "immutable"
 import PropTypes from "prop-types"
+import { fallbackT } from "core/plugins/i18n/fn"
 
 /* eslint-disable  react/jsx-no-bind */
 
@@ -47,7 +48,7 @@ export default class Models extends Component {
 
   render(){
     let { specSelectors, getComponent, layoutSelectors, layoutActions, getConfigs, t } = this.props
-    const tFn = t || ((key) => key)
+    const tFn = t || fallbackT
     let definitions = specSelectors.definitions()
     let { docExpansion, defaultModelsExpandDepth } = getConfigs()
     if (!definitions.size || defaultModelsExpandDepth < 0) return null

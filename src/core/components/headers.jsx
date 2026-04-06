@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Im from "immutable"
+import { fallbackT } from "core/plugins/i18n/fn"
 
 const propClass = "header-example"
 
@@ -13,7 +14,7 @@ export default class Headers extends React.Component {
 
   render() {
     let { headers, getComponent, t } = this.props
-    t = t || ((key) => key)
+    t = t || fallbackT
 
     const Property = getComponent("Property")
     const Markdown = getComponent("Markdown", true)

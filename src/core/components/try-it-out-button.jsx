@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { fallbackT } from "core/plugins/i18n/fn"
 
 export default class TryItOutButton extends React.Component {
 
@@ -20,7 +21,7 @@ export default class TryItOutButton extends React.Component {
     enabled: false,
     hasUserEditedBody: false,
     isOAS3: false,
-    t: (key) => key,
+    t: fallbackT,
   }
 
   render() {

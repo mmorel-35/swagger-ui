@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { fallbackT } from "core/plugins/i18n/fn"
 
 export default class FilterContainer extends React.Component {
 
@@ -33,7 +34,7 @@ export default class FilterContainer extends React.Component {
         {filter === false ? null :
           <div className="filter-container">
             <Col className="filter wrapper" mobile={12}>
-              <input className={classNames.join(" ")} placeholder={(t || (key => key))("placeholder.filter_by_tag")} type="text"
+              <input className={classNames.join(" ")} placeholder={(t || fallbackT)("placeholder.filter_by_tag")} type="text"
                      onChange={this.onFilterChange} value={typeof filter === "string" ? filter : ""}
                      disabled={isLoading}/>
             </Col>

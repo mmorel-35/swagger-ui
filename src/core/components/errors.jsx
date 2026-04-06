@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { List } from "immutable"
+import { fallbackT } from "core/plugins/i18n/fn"
 
 export default class Errors extends React.Component {
 
@@ -15,7 +16,7 @@ export default class Errors extends React.Component {
 
   render() {
     let { editorActions, errSelectors, layoutSelectors, layoutActions, getComponent, t } = this.props
-    t = t || ((key) => key)
+    t = t || fallbackT
 
     const Collapse = getComponent("Collapse")
 
@@ -78,7 +79,7 @@ const ThrownErrorItem = ( { error, jumpToLine, t } ) => {
             { error.get("message") }
           </span>
           <div className="error-line">
-            { errorLine && jumpToLine ? <a onClick={jumpToLine.bind(null, errorLine)}>{(t || (key => key))("errors.jump_to_line", { line: errorLine })}</a> : null }
+            { errorLine && jumpToLine ? <a onClick={jumpToLine.bind(null, errorLine)}>{(t || fallbackT)("errors.jump_to_line", { line: errorLine })}</a> : null }
           </div>
         </div>
       }
@@ -107,7 +108,7 @@ const SpecErrorItem = ( { error, jumpToLine = null, t } ) => {
           <span className="message">{ error.get("message") }</span>
           <div className="error-line">
             { jumpToLine ? (
-              <a onClick={jumpToLine.bind(null, error.get("line"))}>{(t || (key => key))("errors.jump_to_line", { line: error.get("line") })}</a>
+              <a onClick={jumpToLine.bind(null, error.get("line"))}>{(t || fallbackT)("errors.jump_to_line", { line: error.get("line") })}</a>
             ) : null }
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { fallbackT } from "core/plugins/i18n/fn"
 
 export default class ApiKeyAuth extends React.Component {
   static propTypes = {
@@ -42,7 +43,7 @@ export default class ApiKeyAuth extends React.Component {
 
   render() {
     let { schema, getComponent, errSelectors, name, authSelectors, t } = this.props
-    const tFn = t || ((key) => key)
+    const tFn = t || fallbackT
     const Input = getComponent("Input")
     const Row = getComponent("Row")
     const Col = getComponent("Col")

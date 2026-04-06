@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { fallbackT } from "core/plugins/i18n/fn"
 
 export default class AuthorizeOperationBtn extends React.Component {
     static propTypes = {
@@ -23,7 +24,7 @@ export default class AuthorizeOperationBtn extends React.Component {
 
     const LockAuthOperationIcon = getComponent("LockAuthOperationIcon", true)
     const UnlockAuthOperationIcon = getComponent("UnlockAuthOperationIcon", true)
-    const tFn = t || ((key) => key)
+    const tFn = t || fallbackT
 
     return (
       <button className="authorization__btn"

@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react"
 import classNames from "classnames"
 import PropTypes from "prop-types"
 import { CopyToClipboard } from "react-copy-to-clipboard"
+import { fallbackT } from "core/plugins/i18n/fn"
 
 const style = {
   cursor: "pointer",
@@ -34,7 +35,7 @@ const activeStyle = {
 }
 
 const RequestSnippets = ({ request, requestSnippetsSelectors, getComponent, t }) => {
-  const tFn = t || ((key) => key)
+  const tFn = t || fallbackT
   const rootRef = useRef(null)
 
   const ArrowIcon = getComponent("ArrowUpIcon")

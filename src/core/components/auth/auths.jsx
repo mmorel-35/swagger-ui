@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import ImPropTypes from "react-immutable-proptypes"
+import { fallbackT } from "core/plugins/i18n/fn"
 
 export default class Auths extends React.Component {
   static propTypes = {
@@ -57,7 +58,7 @@ export default class Auths extends React.Component {
 
   render() {
     let { definitions, getComponent, authSelectors, errSelectors, t } = this.props
-    const tFn = t || ((key) => key)
+    const tFn = t || fallbackT
     const AuthItem = getComponent("AuthItem")
     const Oauth2 = getComponent("oauth2", true)
     const Button = getComponent("Button")

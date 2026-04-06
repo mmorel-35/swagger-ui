@@ -3,6 +3,7 @@ import { fromJS, Iterable } from "immutable"
 import PropTypes from "prop-types"
 import ImPropTypes from "react-immutable-proptypes"
 import { defaultStatusCode, getAcceptControllingResponse, isExtension } from "core/utils"
+import { fallbackT } from "core/plugins/i18n/fn"
 import createHtmlReadyId from "core/utils/create-html-ready-id"
 
 export default class Responses extends React.Component {
@@ -76,7 +77,7 @@ export default class Responses extends React.Component {
       oas3Actions,
       t,
     } = this.props
-    t = t || ((key) => key)
+    t = t || fallbackT
     let defaultCode = defaultStatusCode( responses )
 
     const ContentType = getComponent( "contentType" )

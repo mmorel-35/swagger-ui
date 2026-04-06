@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import ImPropTypes from "react-immutable-proptypes"
 import Im from "immutable"
 import { createDeepLinkPath, escapeDeepLinkPath, isFunc } from "core/utils"
+import { fallbackT } from "core/plugins/i18n/fn"
 import { safeBuildUrl, sanitizeUrl } from "core/utils/url"
 
 /* eslint-disable  react/jsx-no-bind */
@@ -107,7 +108,7 @@ export default class OperationTag extends React.Component {
           <button
             aria-expanded={showTag}
             className="expand-operation"
-            title={showTag ? (t || (key => key))("aria.collapse_operation") : (t || (key => key))("aria.expand_operation")}
+            title={showTag ? (t || fallbackT)("aria.collapse_operation") : (t || fallbackT)("aria.expand_operation")}
             onClick={() => layoutActions.show(isShownKey, !showTag)}>
 
             {showTag ? <ArrowUpIcon className="arrow" /> : <ArrowDownIcon className="arrow" />}

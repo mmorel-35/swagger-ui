@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
+import { fallbackT } from "core/plugins/i18n/fn"
 
 export default class Clear extends Component {
 
@@ -13,7 +14,7 @@ export default class Clear extends Component {
     const { t } = this.props
     return (
       <button className="btn btn-clear opblock-control__btn" onClick={ this.onClick }>
-        {(t || (key => key))("button.clear")}
+        {(t || fallbackT)("button.clear")}
       </button>
     )
   }

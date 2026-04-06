@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
+import { fallbackT } from "core/plugins/i18n/fn"
 
 export default class Execute extends Component {
 
@@ -97,7 +98,7 @@ export default class Execute extends Component {
     const { disabled, t } = this.props
     return (
         <button className="btn execute opblock-control__btn" onClick={ this.onClick } disabled={disabled}>
-          {(t || (key => key))("button.execute")}
+          {(t || fallbackT)("button.execute")}
         </button>
     )
   }

@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import oauth2Authorize from "core/oauth2-authorize"
+import { fallbackT } from "core/plugins/i18n/fn"
 
 export default class Oauth2 extends React.Component {
   static propTypes = {
@@ -112,7 +113,7 @@ export default class Oauth2 extends React.Component {
     let {
       schema, getComponent, authSelectors, errSelectors, name, specSelectors, t
     } = this.props
-    const tFn = t || ((key) => key)
+    const tFn = t || fallbackT
     const Input = getComponent("Input")
     const Row = getComponent("Row")
     const Col = getComponent("Col")

@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import ImPropTypes from "react-immutable-proptypes"
 import cx from "classnames"
 import { fromJS, Seq, Iterable, Map } from "immutable"
+import { fallbackT } from "core/plugins/i18n/fn"
 import { getExtensions, fromJSOrdered, stringify } from "core/utils"
 import { getKnownSyntaxHighlighterLanguage } from "core/utils/jsonParse"
 
@@ -90,7 +91,7 @@ export default class Response extends React.Component {
       oas3Actions,
       t,
     } = this.props
-    t = t || ((key) => key)
+    t = t || fallbackT
 
     let { inferSchema, getSampleSchema } = fn
     let isOAS3 = specSelectors.isOAS3()

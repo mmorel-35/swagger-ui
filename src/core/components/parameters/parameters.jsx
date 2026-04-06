@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { Map, List } from "immutable"
 import ImPropTypes from "react-immutable-proptypes"
 import createHtmlReadyId from "core/utils/create-html-ready-id"
+import { fallbackT } from "core/plugins/i18n/fn"
 
 export default class Parameters extends Component {
 
@@ -113,7 +114,7 @@ export default class Parameters extends Component {
       operation,
       t,
     } = this.props
-    t = t || ((key) => key)
+    t = t || fallbackT
 
     const ParameterRow = getComponent("parameterRow")
     const TryItOutButton = getComponent("TryItOutButton")

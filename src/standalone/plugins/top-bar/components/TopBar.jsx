@@ -1,5 +1,6 @@
 import React, { cloneElement } from "react"
 import PropTypes from "prop-types"
+import { fallbackT } from "core/plugins/i18n/fn"
 
 import {parseSearch, serializeSearch} from "core/utils"
 
@@ -133,7 +134,7 @@ class TopBar extends React.Component {
       })
 
       control.push(
-        <label className="select-label" htmlFor="select"><span>{(this.props.t || (key => key))("topbar.select_definition")}</span>
+        <label className="select-label" htmlFor="select"><span>{(this.props.t || fallbackT)("topbar.select_definition")}</span>
           <select id="select" disabled={isLoading} onChange={ this.onUrlSelect } value={urls[this.state.selectedIndex].url}>
             {rows}
           </select>
@@ -152,7 +153,7 @@ class TopBar extends React.Component {
           id="download-url-input"
         />
       )
-      control.push(<Button className="download-url-button" onClick={ this.downloadUrl }>{(this.props.t || (key => key))("button.explore")}</Button>)
+      control.push(<Button className="download-url-button" onClick={ this.downloadUrl }>{(this.props.t || fallbackT)("button.explore")}</Button>)
     }
 
     return (

@@ -4,7 +4,6 @@
 import reducers from "./reducers"
 import * as actions from "./actions"
 import * as selectors from "./selectors"
-import { translate } from "./fn"
 import en from "./locales/en"
 import win from "core/window"
 
@@ -16,8 +15,11 @@ export default function I18nPlugin() {
 
       // ── 2. Determine locale ──────────────────────────────────────────────
       const { locale: configLocale } = system.getConfigs()
-      let locale = configLocale
-      if (!locale) {
+      let locale
+      if (configLocale) {
+        // Normalize configured locale to base language code, same as auto-detection
+        locale = configLocale.split("-")[0].toLowerCase()
+      } else {
         const browserLang =
           (win.navigator &&
             win.navigator.languages &&
@@ -34,13 +36,24 @@ export default function I18nPlugin() {
         const allMessages = system.i18nSelectors.getMessages()
         const currentLocale = system.i18nSelectors.getLocale()
 
+        // Use Immutable-native lookups — avoids expensive .toJS() on every call
         const localeMap = allMessages.get(currentLocale)
         const enMap = allMessages.get("en")
 
-        const localeMsgs = localeMap ? localeMap.toJS() : null
-        const fallbackMsgs = enMap ? enMap.toJS() : en
+        let raw
+        if (localeMap && localeMap.has(key)) {
+          raw = localeMap.get(key)
+        } else if (enMap && enMap.has(key)) {
+          raw = enMap.get(key)
+        } else {
+          // Ultimate fallback: static en object (always available without Redux)
+          raw = key in en ? en[key] : key
+        }
 
-        return translate(localeMsgs, fallbackMsgs, key, vars)
+        if (!vars) return String(raw)
+        return String(raw).replace(/\{\{(\w+)\}\}/g, (_, k) =>
+          k in vars ? String(vars[k]) : `{{${k}}}`
+        )
       }
     },
 

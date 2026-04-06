@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { fromJS, List } from "immutable"
 import { getKnownSyntaxHighlighterLanguage } from "core/utils/jsonParse"
 import createHtmlReadyId from "core/utils/create-html-ready-id"
+import { fallbackT } from "core/plugins/i18n/fn"
 
 const NOOP = Function.prototype
 
@@ -101,7 +102,7 @@ export default class ParamBody extends PureComponent {
       getComponent,
       t,
     } = this.props
-    const tFn = t || ((key) => key)
+    const tFn = t || fallbackT
 
     const Button = getComponent("Button")
     const TextArea = getComponent("TextArea")

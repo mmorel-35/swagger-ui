@@ -1,6 +1,7 @@
 import React from "react"
 import { CopyToClipboard } from "react-copy-to-clipboard"
 import PropTypes from "prop-types"
+import { fallbackT } from "core/plugins/i18n/fn"
 
 /**
  * @param {{ getComponent: func, textToCopy: string }} props
@@ -14,7 +15,7 @@ export default class CopyToClipboardBtn extends React.Component {
     const CopyIcon = getComponent("CopyIcon")
 
     return (
-      <div className="view-line-link copy-to-clipboard" title={(t || (key => key))("button.copy_to_clipboard")}>
+      <div className="view-line-link copy-to-clipboard" title={(t || fallbackT)("button.copy_to_clipboard")}>
         <CopyToClipboard text={this.props.textToCopy}>
           <CopyIcon />
         </CopyToClipboard>
