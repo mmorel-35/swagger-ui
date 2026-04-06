@@ -14,15 +14,7 @@ export default function I18nPlugin() {
       // ── 1. Load built-in English messages ────────────────────────────────
       system.i18nActions.loadMessages("en", en)
 
-      // ── 2. Load any caller-supplied messages ─────────────────────────────
-      const { i18nMessages } = system.getConfigs()
-      if (i18nMessages && typeof i18nMessages === "object") {
-        Object.entries(i18nMessages).forEach(([locale, messages]) => {
-          system.i18nActions.loadMessages(locale, messages)
-        })
-      }
-
-      // ── 3. Determine locale ──────────────────────────────────────────────
+      // ── 2. Determine locale ──────────────────────────────────────────────
       const { locale: configLocale } = system.getConfigs()
       let locale = configLocale
       if (!locale) {
@@ -36,7 +28,7 @@ export default function I18nPlugin() {
       }
       system.i18nActions.setLocale(locale)
 
-      // ── 4. Register the t() translation function ─────────────────────────
+      // ── 3. Register the t() translation function ─────────────────────────
       this.rootInjects = this.rootInjects || {}
       this.rootInjects.t = (key, vars) => {
         const allMessages = system.i18nSelectors.getMessages()

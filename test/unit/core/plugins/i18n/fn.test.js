@@ -1,3 +1,6 @@
+/**
+ * @prettier
+ */
 import { translate } from "core/plugins/i18n/fn"
 
 describe("i18n fn - translate", () => {
@@ -38,17 +41,19 @@ describe("i18n fn - translate", () => {
 
   describe("variable interpolation", () => {
     it("interpolates {{varName}} placeholders with vars", () => {
-      const result = translate(enMessages, enMessages, "errors.jump_to_line", { line: 42 })
+      const result = translate(enMessages, enMessages, "errors.jump_to_line", {
+        line: 42,
+      })
       expect(result).toBe("Jump to line 42")
     })
 
     it("converts var values to strings", () => {
-      const msgs = { "msg": "Value is {{val}}" }
+      const msgs = { msg: "Value is {{val}}" }
       expect(translate(msgs, msgs, "msg", { val: 123 })).toBe("Value is 123")
     })
 
     it("leaves unknown placeholders as-is", () => {
-      const msgs = { "msg": "Hello {{name}} and {{other}}" }
+      const msgs = { msg: "Hello {{name}} and {{other}}" }
       expect(translate(msgs, msgs, "msg", { name: "World" })).toBe(
         "Hello World and {{other}}"
       )
@@ -68,12 +73,16 @@ describe("i18n fn - translate", () => {
   describe("locale override", () => {
     it("uses locale message over fallback when both have the key", () => {
       const deMessages = { "button.cancel": "Abbrechen" }
-      expect(translate(deMessages, enMessages, "button.cancel")).toBe("Abbrechen")
+      expect(translate(deMessages, enMessages, "button.cancel")).toBe(
+        "Abbrechen"
+      )
     })
 
     it("uses english fallback for keys missing in locale", () => {
       const deMessages = { "button.cancel": "Abbrechen" }
-      expect(translate(deMessages, enMessages, "button.execute")).toBe("Execute")
+      expect(translate(deMessages, enMessages, "button.execute")).toBe(
+        "Execute"
+      )
     })
   })
 })

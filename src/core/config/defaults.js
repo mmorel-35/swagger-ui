@@ -101,10 +101,6 @@ const defaultOptions = Object.freeze({
   // BCP 47 locale tag (e.g. "en", "fr", "de").  null = auto-detect from
   // navigator.languages / navigator.language, falling back to "en".
   locale: null,
-  // Caller-supplied message overrides / additional locales.
-  // Shape: { [locale]: { [key]: translatedString } }
-  // Merged on top of the built-in English messages.
-  i18nMessages: {},
 })
 
 export default defaultOptions
