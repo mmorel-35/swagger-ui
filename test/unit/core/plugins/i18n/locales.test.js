@@ -19,16 +19,6 @@ describe("i18n locale catalogs", () => {
     expect(EN_KEYS.length).toBeGreaterThan(0)
   })
 
-  it("English catalog has no duplicate keys (object literal sanity)", () => {
-    // Duplicate keys in an object literal silently overwrite — this guards
-    // against copy-paste mistakes in en.js.
-    const seen = new Set()
-    for (const key of EN_KEYS) {
-      expect(seen.has(key)).toBe(false)
-      seen.add(key)
-    }
-  })
-
   describe.each(Object.entries(NON_ENGLISH_LOCALES))(
     "%s locale",
     (lang, catalog) => {

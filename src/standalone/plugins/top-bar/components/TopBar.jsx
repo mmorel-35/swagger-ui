@@ -9,6 +9,10 @@ class TopBar extends React.Component {
   static propTypes = {
     layoutActions: PropTypes.object.isRequired,
     authActions: PropTypes.object.isRequired,
+    specSelectors: PropTypes.object.isRequired,
+    specActions: PropTypes.object.isRequired,
+    getComponent: PropTypes.func.isRequired,
+    getConfigs: PropTypes.func.isRequired,
     t: PropTypes.func,
   }
 
@@ -177,14 +181,6 @@ class TopBar extends React.Component {
       </div>
     )
   }
-}
-
-TopBar.propTypes = {
-  specSelectors: PropTypes.object.isRequired,
-  specActions: PropTypes.object.isRequired,
-  getComponent: PropTypes.func.isRequired,
-  getConfigs: PropTypes.func.isRequired,
-  t: PropTypes.func,
 }
 
 export default TopBar
