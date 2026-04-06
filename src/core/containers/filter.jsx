@@ -8,6 +8,7 @@ export default class FilterContainer extends React.Component {
     layoutSelectors: PropTypes.object.isRequired,
     layoutActions: PropTypes.object.isRequired,
     getComponent: PropTypes.func.isRequired,
+    t: PropTypes.func,
   }
 
   onFilterChange = (e) => {
@@ -16,7 +17,7 @@ export default class FilterContainer extends React.Component {
   }
 
   render () {
-    const {specSelectors, layoutSelectors, getComponent} = this.props
+    const {specSelectors, layoutSelectors, getComponent, t} = this.props
     const Col = getComponent("Col")
 
     const isLoading = specSelectors.loadingStatus() === "loading"
@@ -32,7 +33,7 @@ export default class FilterContainer extends React.Component {
         {filter === false ? null :
           <div className="filter-container">
             <Col className="filter wrapper" mobile={12}>
-              <input className={classNames.join(" ")} placeholder="Filter by tag" type="text"
+              <input className={classNames.join(" ")} placeholder={(t || (key => key))("placeholder.filter_by_tag")} type="text"
                      onChange={this.onFilterChange} value={typeof filter === "string" ? filter : ""}
                      disabled={isLoading}/>
             </Col>

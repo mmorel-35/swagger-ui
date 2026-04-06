@@ -21,7 +21,8 @@ export default class Responses extends React.Component {
     oas3Actions: PropTypes.object.isRequired,
     oas3Selectors: PropTypes.object.isRequired,
     specPath: ImPropTypes.list.isRequired,
-    fn: PropTypes.object.isRequired
+    fn: PropTypes.object.isRequired,
+    t: PropTypes.func,
   }
 
   static defaultProps = {
@@ -73,7 +74,9 @@ export default class Responses extends React.Component {
       method,
       oas3Selectors,
       oas3Actions,
+      t,
     } = this.props
+    t = t || ((key) => key)
     let defaultCode = defaultStatusCode( responses )
 
     const ContentType = getComponent( "contentType" )
@@ -94,12 +97,12 @@ export default class Responses extends React.Component {
     return (!nonExtensionResponses || !nonExtensionResponses.size) ? null : (
       <div className="responses-wrapper">
         <div className="opblock-section-header">
-          <h4>Responses</h4>
+          <h4>{t("label.responses")}</h4>
             { specSelectors.isOAS3() ? null : <label htmlFor={controlId}>
-              <span>Response content type</span>
+              <span>{t("label.response_content_type")}</span>
               <ContentType value={producesValue}
                          ariaControls={regionId}
-                         ariaLabel="Response content type"
+                         ariaLabel={t("aria.response_content_type")}
                          className="execute-content-type"
                          contentTypes={produces}
                          controlId={controlId}
@@ -117,7 +120,7 @@ export default class Responses extends React.Component {
                                                 path={ this.props.path }
                                                 method={ this.props.method }
                                                 displayRequestDuration={ displayRequestDuration } />
-                                  <h4>Responses</h4>
+                                  <h4>{t("label.responses")}</h4>
                                 </div>
 
           }
@@ -125,9 +128,9 @@ export default class Responses extends React.Component {
           <table aria-live="polite" className="responses-table" id={regionId} role="region">
             <thead>
               <tr className="responses-header">
-                <td className="col_header response-col_status">Code</td>
-                <td className="col_header response-col_description">Description</td>
-                { specSelectors.isOAS3() ? <td className="col col_header response-col_links">Links</td> : null }
+                <td className="col_header response-col_status">{t("label.code")}</td>
+                <td className="col_header response-col_description">{t("label.description")}</td>
+                { specSelectors.isOAS3() ? <td className="col col_header response-col_links">{t("label.links")}</td> : null }
               </tr>
             </thead>
             <tbody>

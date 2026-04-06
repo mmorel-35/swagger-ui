@@ -10,7 +10,8 @@ export default class BasicAuth extends React.Component {
     onChange: PropTypes.func.isRequired,
     name: PropTypes.string.isRequired,
     errSelectors: PropTypes.object.isRequired,
-    authSelectors: PropTypes.object.isRequired
+    authSelectors: PropTypes.object.isRequired,
+    t: PropTypes.func,
   }
 
   constructor(props, context) {
@@ -48,7 +49,8 @@ export default class BasicAuth extends React.Component {
   }
 
   render() {
-    let { schema, getComponent, name, errSelectors, authSelectors } = this.props
+    let { schema, getComponent, name, errSelectors, authSelectors, t } = this.props
+    const tFn = t || ((key) => key)
     const Input = getComponent("Input")
     const Row = getComponent("Row")
     const Col = getComponent("Col")
@@ -61,13 +63,13 @@ export default class BasicAuth extends React.Component {
 
     return (
       <div>
-        <h4>Basic authorization<JumpToPath path={path} /></h4>
-        { username && <h6>Authorized</h6> }
+        <h4>{tFn("auth.basic_authorization_title")}<JumpToPath path={path} /></h4>
+        { username && <h6>{tFn("auth.authorized")}</h6> }
         <Row>
           <Markdown source={ schema.get("description") } />
         </Row>
         <Row>
-          <label htmlFor="auth_username">Username:</label>
+          <label htmlFor="auth_username">{tFn("auth.username_cap")}</label>
           {
             username ? <code> { username } </code>
                      : <Col>
@@ -83,7 +85,7 @@ export default class BasicAuth extends React.Component {
           }
         </Row>
         <Row>
-          <label htmlFor="auth_password">Password:</label>
+          <label htmlFor="auth_password">{tFn("auth.password_cap")}</label>
             {
               username ? <code> ****** </code>
                        : <Col>

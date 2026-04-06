@@ -12,7 +12,8 @@ export default class Execute extends Component {
     oas3Selectors: PropTypes.object.isRequired,
     oas3Actions: PropTypes.object.isRequired,
     onExecute: PropTypes.func,
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
+    t: PropTypes.func,
   }
 
   handleValidateParameters = () => {
@@ -93,10 +94,10 @@ export default class Execute extends Component {
   onChangeProducesWrapper = ( val ) => this.props.specActions.changeProducesValue([this.props.path, this.props.method], val)
 
   render(){
-    const { disabled } = this.props
+    const { disabled, t } = this.props
     return (
         <button className="btn execute opblock-control__btn" onClick={ this.onClick } disabled={disabled}>
-          Execute
+          {(t || (key => key))("button.execute")}
         </button>
     )
   }

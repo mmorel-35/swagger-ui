@@ -5,6 +5,7 @@ import toLower from "lodash/toLower"
 import { extractFileNameFromContentDispositionHeader } from "core/utils"
 import { getKnownSyntaxHighlighterLanguage } from "core/utils/jsonParse"
 import win from "core/window"
+import { fallbackT } from "core/plugins/i18n/fn"
 
 export default class ResponseBody extends React.PureComponent {
   state = {
@@ -16,7 +17,8 @@ export default class ResponseBody extends React.PureComponent {
     contentType: PropTypes.string,
     getComponent: PropTypes.func.isRequired,
     headers: PropTypes.object,
-    url: PropTypes.string
+    url: PropTypes.string,
+    t: PropTypes.func,
   }
 
   updateParsedContent = (prevContent) => {
@@ -50,7 +52,8 @@ export default class ResponseBody extends React.PureComponent {
   }
 
   render() {
-    let { content, contentType, url, headers={}, getComponent } = this.props
+    let { content, contentType, url, headers={}, getComponent, t } = this.props
+    t = t || fallbackT
     const { parsedContent } = this.state
     const HighlightCode = getComponent("HighlightCode", true)
     const downloadName = "response_" + new Date().getTime()
@@ -85,9 +88,9 @@ export default class ResponseBody extends React.PureComponent {
         }
 
         if(win.navigator && win.navigator.msSaveOrOpenBlob) {
-            bodyEl = <div><a href={ href } onClick={() => win.navigator.msSaveOrOpenBlob(blob, download)}>{ "Download file" }</a></div>
+            bodyEl = <div><a href={ href } onClick={() => win.navigator.msSaveOrOpenBlob(blob, download)}>{ t("button.download_file") }</a></div>
         } else {
-            bodyEl = <div><a href={ href } download={ download }>{ "Download file" }</a></div>
+            bodyEl = <div><a href={ href } download={ download }>{ t("button.download_file") }</a></div>
         }
       } else {
         bodyEl = <pre className="microlight">Download headers detected but your browser does not support downloading binary via XHR (Blob).</pre>
@@ -162,7 +165,7 @@ export default class ResponseBody extends React.PureComponent {
     }
 
     return ( !bodyEl ? null : <div>
-        <h5>Response body</h5>
+        <h5>{t("label.response_body")}</h5>
         { bodyEl }
       </div>
     )

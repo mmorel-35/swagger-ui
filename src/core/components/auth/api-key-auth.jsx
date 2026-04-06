@@ -9,7 +9,8 @@ export default class ApiKeyAuth extends React.Component {
     schema: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
     onChange: PropTypes.func,
-    authSelectors: PropTypes.object.isRequired
+    authSelectors: PropTypes.object.isRequired,
+    t: PropTypes.func,
   }
 
   constructor(props, context) {
@@ -40,7 +41,8 @@ export default class ApiKeyAuth extends React.Component {
   }
 
   render() {
-    let { schema, getComponent, errSelectors, name, authSelectors } = this.props
+    let { schema, getComponent, errSelectors, name, authSelectors, t } = this.props
+    const tFn = t || ((key) => key)
     const Input = getComponent("Input")
     const Row = getComponent("Row")
     const Col = getComponent("Col")
@@ -57,18 +59,18 @@ export default class ApiKeyAuth extends React.Component {
           <code>{ name || schema.get("name") }</code>&nbsp;(apiKey)
           <JumpToPath path={path} />
         </h4>
-        { value && <h6>Authorized</h6>}
+        { value && <h6>{tFn("auth.authorized")}</h6>}
         <Row>
           <Markdown source={ schema.get("description") } />
         </Row>
         <Row>
-          <p>Name: <code>{ schema.get("name") }</code></p>
+          <p>{tFn("auth.api_key_name")} <code>{ schema.get("name") }</code></p>
         </Row>
         <Row>
-          <p>In: <code>{ schema.get("in") }</code></p>
+          <p>{tFn("auth.api_key_in")} <code>{ schema.get("in") }</code></p>
         </Row>
         <Row>
-          <label htmlFor="api_key_value">Value:</label>
+          <label htmlFor="api_key_value">{tFn("auth.api_key_value")}</label>
           {
             value ? <code> ****** </code>
                   : <Col>

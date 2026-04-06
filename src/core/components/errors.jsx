@@ -10,10 +10,12 @@ export default class Errors extends React.Component {
     layoutSelectors: PropTypes.object.isRequired,
     layoutActions: PropTypes.object.isRequired,
     getComponent: PropTypes.func.isRequired,
+    t: PropTypes.func,
   }
 
   render() {
-    let { editorActions, errSelectors, layoutSelectors, layoutActions, getComponent } = this.props
+    let { editorActions, errSelectors, layoutSelectors, layoutActions, getComponent, t } = this.props
+    t = t || ((key) => key)
 
     const Collapse = getComponent("Collapse")
 
@@ -38,18 +40,18 @@ export default class Errors extends React.Component {
     return (
       <pre className="errors-wrapper">
         <hgroup className="error">
-          <h4 className="errors__title">Errors</h4>
-          <button className="btn errors__clear-btn" onClick={ toggleVisibility }>{ isVisible ? "Hide" : "Show" }</button>
+          <h4 className="errors__title">{t("errors.title")}</h4>
+          <button className="btn errors__clear-btn" onClick={ toggleVisibility }>{ isVisible ? t("button.hide") : t("button.show") }</button>
         </hgroup>
         <Collapse isOpened={ isVisible } animated >
           <div className="errors">
             { sortedJSErrors.map((err, i) => {
               let type = err.get("type")
               if(type === "thrown" || type === "auth") {
-                return <ThrownErrorItem key={ i } error={ err.get("error") || err } jumpToLine={jumpToLine} />
+                return <ThrownErrorItem key={ i } error={ err.get("error") || err } jumpToLine={jumpToLine} t={t} />
               }
               if(type === "spec") {
-                return <SpecErrorItem key={ i } error={ err } jumpToLine={jumpToLine} />
+                return <SpecErrorItem key={ i } error={ err } jumpToLine={jumpToLine} t={t} />
               }
             }) }
           </div>
@@ -59,7 +61,7 @@ export default class Errors extends React.Component {
     }
 }
 
-const ThrownErrorItem = ( { error, jumpToLine } ) => {
+const ThrownErrorItem = ( { error, jumpToLine, t } ) => {
   if(!error) {
     return null
   }
@@ -76,7 +78,7 @@ const ThrownErrorItem = ( { error, jumpToLine } ) => {
             { error.get("message") }
           </span>
           <div className="error-line">
-            { errorLine && jumpToLine ? <a onClick={jumpToLine.bind(null, errorLine)}>Jump to line { errorLine }</a> : null }
+            { errorLine && jumpToLine ? <a onClick={jumpToLine.bind(null, errorLine)}>{(t || (key => key))("errors.jump_to_line", { line: errorLine })}</a> : null }
           </div>
         </div>
       }
@@ -84,7 +86,7 @@ const ThrownErrorItem = ( { error, jumpToLine } ) => {
     )
   }
 
-const SpecErrorItem = ( { error, jumpToLine = null } ) => {
+const SpecErrorItem = ( { error, jumpToLine = null, t } ) => {
   let locationMessage = null
 
   if(error.get("path")) {
@@ -105,7 +107,7 @@ const SpecErrorItem = ( { error, jumpToLine = null } ) => {
           <span className="message">{ error.get("message") }</span>
           <div className="error-line">
             { jumpToLine ? (
-              <a onClick={jumpToLine.bind(null, error.get("line"))}>Jump to line { error.get("line") }</a>
+              <a onClick={jumpToLine.bind(null, error.get("line"))}>{(t || (key => key))("errors.jump_to_line", { line: error.get("line") })}</a>
             ) : null }
           </div>
         </div>
@@ -123,10 +125,12 @@ function toTitleCase(str) {
 
 ThrownErrorItem.propTypes = {
   error: PropTypes.object.isRequired,
-  jumpToLine: PropTypes.func
+  jumpToLine: PropTypes.func,
+  t: PropTypes.func,
 }
 
 SpecErrorItem.propTypes = {
   error: PropTypes.object.isRequired,
-  jumpToLine: PropTypes.func
+  jumpToLine: PropTypes.func,
+  t: PropTypes.func,
 }

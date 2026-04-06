@@ -18,7 +18,8 @@ export default class ParamBody extends PureComponent {
     getComponent: PropTypes.func.isRequired,
     isExecute: PropTypes.bool,
     specSelectors: PropTypes.object.isRequired,
-    pathMethod: PropTypes.array.isRequired
+    pathMethod: PropTypes.array.isRequired,
+    t: PropTypes.func,
   }
 
   static defaultProp = {
@@ -98,7 +99,9 @@ export default class ParamBody extends PureComponent {
       specSelectors,
       pathMethod,
       getComponent,
+      t,
     } = this.props
+    const tFn = t || ((key) => key)
 
     const Button = getComponent("Button")
     const TextArea = getComponent("TextArea")
@@ -132,18 +135,18 @@ export default class ParamBody extends PureComponent {
             !isExecute ? null
                        : <div className="body-param-edit">
                         <Button className={isEditBox ? "btn cancel body-param__example-edit" : "btn edit body-param__example-edit"}
-                                 onClick={this.toggleIsEditBox}>{ isEditBox ? "Cancel" : "Edit"}
+                                 onClick={this.toggleIsEditBox}>{ isEditBox ? tFn("button.cancel") : tFn("button.edit")}
                          </Button>
                          </div>
           }
           <label htmlFor={controlId}>
-            <span>Parameter content type</span>
+            <span>{tFn("label.parameter_content_type")}</span>
             <ContentType
               value={ consumesValue }
               contentTypes={ consumes }
               onChange={onChangeConsumes}
               className="body-param-content-type"
-              ariaLabel="Parameter content type"
+              ariaLabel={tFn("label.parameter_content_type")}
               controlId={controlId}
             />
           </label>

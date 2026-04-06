@@ -9,12 +9,12 @@ import PropTypes from "prop-types"
  */
 export default class CopyToClipboardBtn extends React.Component {
   render() {
-    let { getComponent } = this.props
+    let { getComponent, t } = this.props
 
     const CopyIcon = getComponent("CopyIcon")
 
     return (
-      <div className="view-line-link copy-to-clipboard" title="Copy to clipboard">
+      <div className="view-line-link copy-to-clipboard" title={(t || (key => key))("button.copy_to_clipboard")}>
         <CopyToClipboard text={this.props.textToCopy}>
           <CopyIcon />
         </CopyToClipboard>
@@ -25,5 +25,6 @@ export default class CopyToClipboardBtn extends React.Component {
   static propTypes = {
     getComponent: PropTypes.func.isRequired,
     textToCopy: PropTypes.string.isRequired,
+    t: PropTypes.func,
   }
 }

@@ -10,9 +10,10 @@ export default class Clear extends Component {
   }
 
   render(){
+    const { t } = this.props
     return (
       <button className="btn btn-clear opblock-control__btn" onClick={ this.onClick }>
-        Clear
+        {(t || (key => key))("button.clear")}
       </button>
     )
   }
@@ -21,5 +22,6 @@ export default class Clear extends Component {
     specActions: PropTypes.object.isRequired,
     path: PropTypes.string.isRequired,
     method: PropTypes.string.isRequired,
+    t: PropTypes.func,
   }
 }

@@ -11,7 +11,8 @@ export default class Models extends Component {
     specActions: PropTypes.object.isRequired,
     layoutSelectors: PropTypes.object,
     layoutActions: PropTypes.object,
-    getConfigs: PropTypes.func.isRequired
+    getConfigs: PropTypes.func.isRequired,
+    t: PropTypes.func,
   }
 
   getSchemaBasePath = () => {
@@ -45,7 +46,8 @@ export default class Models extends Component {
   }
 
   render(){
-    let { specSelectors, getComponent, layoutSelectors, layoutActions, getConfigs } = this.props
+    let { specSelectors, getComponent, layoutSelectors, layoutActions, getConfigs, t } = this.props
+    const tFn = t || ((key) => key)
     let definitions = specSelectors.definitions()
     let { docExpansion, defaultModelsExpandDepth } = getConfigs()
     if (!definitions.size || defaultModelsExpandDepth < 0) return null
@@ -68,7 +70,7 @@ export default class Models extends Component {
           className="models-control"
           onClick={() => layoutActions.show(specPathBase, !showModels)}
         >
-          <span>{isOAS3 ? "Schemas" : "Models"}</span>
+          <span>{isOAS3 ? tFn("label.schemas") : tFn("label.models")}</span>
           {showModels ? <ArrowUpIcon /> : <ArrowDownIcon />}
         </button>
       </h4>

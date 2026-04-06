@@ -28,6 +28,7 @@ export default class OperationTag extends React.Component {
     specUrl: PropTypes.string.isRequired,
 
     children: PropTypes.element,
+    t: PropTypes.func,
   }
 
   render() {
@@ -41,6 +42,7 @@ export default class OperationTag extends React.Component {
       getConfigs,
       getComponent,
       specUrl,
+      t,
     } = this.props
 
     let {
@@ -105,7 +107,7 @@ export default class OperationTag extends React.Component {
           <button
             aria-expanded={showTag}
             className="expand-operation"
-            title={showTag ? "Collapse operation" : "Expand operation"}
+            title={showTag ? (t || (key => key))("aria.collapse_operation") : (t || (key => key))("aria.expand_operation")}
             onClick={() => layoutActions.show(isShownKey, !showTag)}>
 
             {showTag ? <ArrowUpIcon className="arrow" /> : <ArrowDownIcon className="arrow" />}

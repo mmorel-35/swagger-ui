@@ -44,7 +44,8 @@ export default class Response extends React.Component {
     contentType: PropTypes.string,
     activeExamplesKey: PropTypes.string,
     controlsAcceptHeader: PropTypes.bool,
-    onContentTypeChange: PropTypes.func
+    onContentTypeChange: PropTypes.func,
+    t: PropTypes.func,
   }
 
   static defaultProps = {
@@ -87,7 +88,9 @@ export default class Response extends React.Component {
       contentType,
       controlsAcceptHeader,
       oas3Actions,
+      t,
     } = this.props
+    t = t || ((key) => key)
 
     let { inferSchema, getSampleSchema } = fn
     let isOAS3 = specSelectors.isOAS3()
@@ -194,7 +197,7 @@ export default class Response extends React.Component {
                 })}
               >
                 <small className="response-control-media-type__title">
-                  Media type
+                  {t("label.media_type")}
                 </small>
                 <ContentType
                   value={this.state.responseContentType}
@@ -208,14 +211,14 @@ export default class Response extends React.Component {
                 />
                 {controlsAcceptHeader ? (
                   <small className="response-control-media-type__accept-message">
-                    Controls <code>Accept</code> header.
+                    {t("response.controls_accept_header")}
                   </small>
                 ) : null}
               </div>
               {Map.isMap(examplesForMediaType) && !examplesForMediaType.isEmpty() ? (
                 <div className="response-control-examples">
                   <small className="response-control-examples__title">
-                    Examples
+                    {t("label.examples")}
                   </small>
                   <ExamplesSelect
                     examples={examplesForMediaType}
@@ -268,7 +271,7 @@ export default class Response extends React.Component {
             links.toSeq().entrySeq().map(([key, link]) => {
               return <OperationLink key={key} name={key} link={ link } getComponent={getComponent}/>
             })
-          : <i>No links</i>}
+          : <i>{t("label.no_links")}</i>}
         </td> : null}
       </tr>
     )
