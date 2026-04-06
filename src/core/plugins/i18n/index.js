@@ -5,6 +5,7 @@ import reducers from "./reducers"
 import * as actions from "./actions"
 import * as selectors from "./selectors"
 import en from "./locales/en"
+import builtinLocales from "./locales/index"
 import win from "core/window"
 
 export default function I18nPlugin() {
@@ -30,7 +31,12 @@ export default function I18nPlugin() {
       }
       system.i18nActions.setLocale(locale)
 
-      // ── 3. Register the t() translation function ─────────────────────────
+      // ── 3. Auto-load matching built-in locale (if any) ───────────────────
+      if (locale !== "en" && builtinLocales[locale]) {
+        system.i18nActions.loadMessages(locale, builtinLocales[locale])
+      }
+
+      // ── 4. Register the t() translation function ─────────────────────────
       this.rootInjects = this.rootInjects || {}
       this.rootInjects.t = (key, vars) => {
         const allMessages = system.i18nSelectors.getMessages()
