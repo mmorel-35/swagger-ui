@@ -14,7 +14,7 @@ export default class Clear extends Component {
     const { t } = this.props
     return (
       <button className="btn btn-clear opblock-control__btn" onClick={ this.onClick }>
-        {(t || fallbackT)("button.clear")}
+        {t("button.clear")}
       </button>
     )
   }
@@ -24,5 +24,9 @@ export default class Clear extends Component {
     path: PropTypes.string.isRequired,
     method: PropTypes.string.isRequired,
     t: PropTypes.func,
+  }
+
+  static defaultProps = {
+    t: fallbackT,
   }
 }

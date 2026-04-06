@@ -15,7 +15,7 @@ export default class CopyToClipboardBtn extends React.Component {
     const CopyIcon = getComponent("CopyIcon")
 
     return (
-      <div className="view-line-link copy-to-clipboard" title={(t || fallbackT)("button.copy_to_clipboard")}>
+      <div className="view-line-link copy-to-clipboard" title={t("button.copy_to_clipboard")}>
         <CopyToClipboard text={this.props.textToCopy}>
           <CopyIcon />
         </CopyToClipboard>
@@ -27,5 +27,9 @@ export default class CopyToClipboardBtn extends React.Component {
     getComponent: PropTypes.func.isRequired,
     textToCopy: PropTypes.string.isRequired,
     t: PropTypes.func,
+  }
+
+  static defaultProps = {
+    t: fallbackT,
   }
 }

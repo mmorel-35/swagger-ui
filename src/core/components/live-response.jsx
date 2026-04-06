@@ -3,10 +3,10 @@ import PropTypes from "prop-types"
 import ImPropTypes from "react-immutable-proptypes"
 import { fallbackT } from "core/plugins/i18n/fn"
 
-const Headers = ( { headers, t } )=>{
+const Headers = ( { headers, t = fallbackT } )=>{
   return (
     <div>
-      <h5>{(t || fallbackT)("label.response_headers")}</h5>
+      <h5>{t("label.response_headers")}</h5>
       <pre className="microlight">{headers}</pre>
     </div>)
 }
@@ -15,10 +15,10 @@ Headers.propTypes = {
   t: PropTypes.func,
 }
 
-const Duration = ( { duration, t } ) => {
+const Duration = ( { duration, t = fallbackT } ) => {
   return (
     <div>
-      <h5>{(t || fallbackT)("label.request_duration")}</h5>
+      <h5>{t("label.request_duration")}</h5>
       <pre className="microlight">{duration} ms</pre>
     </div>
   )

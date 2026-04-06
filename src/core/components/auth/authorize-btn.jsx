@@ -13,6 +13,7 @@ export default class AuthorizeBtn extends React.Component {
 
   render() {
     let { isAuthorized, showPopup, onClick, getComponent, t } = this.props
+    t = t || fallbackT
 
     //must be moved out of button component
     const AuthorizationPopup = getComponent("authorizationPopup", true)
@@ -22,7 +23,7 @@ export default class AuthorizeBtn extends React.Component {
     return (
       <div className="auth-wrapper">
         <button className={isAuthorized ? "btn authorize locked" : "btn authorize unlocked"} onClick={onClick}>
-          <span>{(t || fallbackT)("button.authorize")}</span>
+          <span>{t("button.authorize")}</span>
           {isAuthorized ? <LockAuthIcon /> : <UnlockAuthIcon />}
         </button>
       { showPopup && <AuthorizationPopup /> }

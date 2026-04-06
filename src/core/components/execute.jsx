@@ -17,6 +17,10 @@ export default class Execute extends Component {
     t: PropTypes.func,
   }
 
+  static defaultProps = {
+    t: fallbackT,
+  }
+
   handleValidateParameters = () => {
     let { specSelectors, specActions, path, method } = this.props
     specActions.validateParams([path, method])
@@ -98,7 +102,7 @@ export default class Execute extends Component {
     const { disabled, t } = this.props
     return (
         <button className="btn execute opblock-control__btn" onClick={ this.onClick } disabled={disabled}>
-          {(t || fallbackT)("button.execute")}
+          {t("button.execute")}
         </button>
     )
   }

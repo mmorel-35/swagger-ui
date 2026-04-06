@@ -12,6 +12,10 @@ export default class FilterContainer extends React.Component {
     t: PropTypes.func,
   }
 
+  static defaultProps = {
+    t: fallbackT,
+  }
+
   onFilterChange = (e) => {
     const {target: {value}} = e
     this.props.layoutActions.updateFilter(value)
@@ -34,7 +38,7 @@ export default class FilterContainer extends React.Component {
         {filter === false ? null :
           <div className="filter-container">
             <Col className="filter wrapper" mobile={12}>
-              <input className={classNames.join(" ")} placeholder={(t || fallbackT)("placeholder.filter_by_tag")} type="text"
+              <input className={classNames.join(" ")} placeholder={t("placeholder.filter_by_tag")} type="text"
                      onChange={this.onFilterChange} value={typeof filter === "string" ? filter : ""}
                      disabled={isLoading}/>
             </Col>

@@ -62,7 +62,7 @@ export default class Errors extends React.Component {
     }
 }
 
-const ThrownErrorItem = ( { error, jumpToLine, t } ) => {
+const ThrownErrorItem = ( { error, jumpToLine, t = fallbackT } ) => {
   if(!error) {
     return null
   }
@@ -79,7 +79,7 @@ const ThrownErrorItem = ( { error, jumpToLine, t } ) => {
             { error.get("message") }
           </span>
           <div className="error-line">
-            { errorLine && jumpToLine ? <a onClick={jumpToLine.bind(null, errorLine)}>{(t || fallbackT)("errors.jump_to_line", { line: errorLine })}</a> : null }
+            { errorLine && jumpToLine ? <a onClick={jumpToLine.bind(null, errorLine)}>{t("errors.jump_to_line", { line: errorLine })}</a> : null }
           </div>
         </div>
       }
@@ -87,7 +87,7 @@ const ThrownErrorItem = ( { error, jumpToLine, t } ) => {
     )
   }
 
-const SpecErrorItem = ( { error, jumpToLine = null, t } ) => {
+const SpecErrorItem = ( { error, jumpToLine = null, t = fallbackT } ) => {
   let locationMessage = null
 
   if(error.get("path")) {
@@ -108,7 +108,7 @@ const SpecErrorItem = ( { error, jumpToLine = null, t } ) => {
           <span className="message">{ error.get("message") }</span>
           <div className="error-line">
             { jumpToLine ? (
-              <a onClick={jumpToLine.bind(null, error.get("line"))}>{(t || fallbackT)("errors.jump_to_line", { line: error.get("line") })}</a>
+              <a onClick={jumpToLine.bind(null, error.get("line"))}>{t("errors.jump_to_line", { line: error.get("line") })}</a>
             ) : null }
           </div>
         </div>

@@ -13,6 +13,7 @@ export default class OperationTag extends React.Component {
   static defaultProps = {
     tagObj: Im.fromJS({}),
     tag: "",
+    t: fallbackT,
   }
 
   static propTypes = {
@@ -108,7 +109,7 @@ export default class OperationTag extends React.Component {
           <button
             aria-expanded={showTag}
             className="expand-operation"
-            title={showTag ? (t || fallbackT)("aria.collapse_operation") : (t || fallbackT)("aria.expand_operation")}
+            title={showTag ? t("aria.collapse_operation") : t("aria.expand_operation")}
             onClick={() => layoutActions.show(isShownKey, !showTag)}>
 
             {showTag ? <ArrowUpIcon className="arrow" /> : <ArrowDownIcon className="arrow" />}
