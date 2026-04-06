@@ -38,6 +38,7 @@ export default function I18nPlugin() {
 
       // ── 4. Register the t() translation function ─────────────────────────
       this.rootInjects = this.rootInjects || {}
+      const own = Object.prototype.hasOwnProperty
       this.rootInjects.t = (key, vars) => {
         const allMessages = system.i18nSelectors.getMessages()
         const currentLocale = system.i18nSelectors.getLocale()
@@ -53,12 +54,12 @@ export default function I18nPlugin() {
           raw = enMap.get(key)
         } else {
           // Ultimate fallback: static en object (always available without Redux)
-          raw = key in en ? en[key] : key
+          raw = own.call(en, key) ? en[key] : key
         }
 
         if (!vars) return String(raw)
         return String(raw).replace(/\{\{(\w+)\}\}/g, (_, k) =>
-          k in vars ? String(vars[k]) : `{{${k}}}`
+          own.call(vars, k) ? String(vars[k]) : `{{${k}}}`
         )
       }
     },

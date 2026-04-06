@@ -98,7 +98,8 @@ const en = {
   "placeholder.filter_by_tag": "Filter by tag",
 
   // ── Response ──────────────────────────────────────────────────────────────
-  "response.controls_accept_header": "Controls Accept header.",
+  "response.controls_accept_header_prefix": "Controls ",
+  "response.controls_accept_header_suffix": " header.",
 
   // ── Topbar ────────────────────────────────────────────────────────────────
   "topbar.select_definition": "Select a definition",

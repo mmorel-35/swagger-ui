@@ -97,7 +97,8 @@ const ko = {
   "placeholder.filter_by_tag": "태그로 필터링",
 
   // ── Response ──────────────────────────────────────────────────────────────
-  "response.controls_accept_header": "Accept 헤더를 제어합니다.",
+  "response.controls_accept_header_prefix": "",
+  "response.controls_accept_header_suffix": " 헤더를 제어합니다.",
 
   // ── Topbar ────────────────────────────────────────────────────────────────
   "topbar.select_definition": "정의 선택",

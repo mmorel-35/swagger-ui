@@ -98,7 +98,8 @@ const es = {
   "placeholder.filter_by_tag": "Filtrar por etiqueta",
 
   // ── Response ──────────────────────────────────────────────────────────────
-  "response.controls_accept_header": "Controla la cabecera Accept.",
+  "response.controls_accept_header_prefix": "Controla la cabecera ",
+  "response.controls_accept_header_suffix": ".",
 
   // ── Topbar ────────────────────────────────────────────────────────────────
   "topbar.select_definition": "Seleccionar una definición",

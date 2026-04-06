@@ -97,7 +97,8 @@ const pt = {
   "placeholder.filter_by_tag": "Filtrar por tag",
 
   // ── Response ──────────────────────────────────────────────────────────────
-  "response.controls_accept_header": "Controla o cabeçalho Accept.",
+  "response.controls_accept_header_prefix": "Controla o cabeçalho ",
+  "response.controls_accept_header_suffix": ".",
 
   // ── Topbar ────────────────────────────────────────────────────────────────
   "topbar.select_definition": "Selecionar uma definição",

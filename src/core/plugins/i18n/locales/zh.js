@@ -97,7 +97,8 @@ const zh = {
   "placeholder.filter_by_tag": "按标签过滤",
 
   // ── Response ──────────────────────────────────────────────────────────────
-  "response.controls_accept_header": "控制 Accept 请求头。",
+  "response.controls_accept_header_prefix": "控制 ",
+  "response.controls_accept_header_suffix": " 请求头。",
 
   // ── Topbar ────────────────────────────────────────────────────────────────
   "topbar.select_definition": "选择一个定义",

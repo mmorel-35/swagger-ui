@@ -97,7 +97,8 @@ const ru = {
   "placeholder.filter_by_tag": "Фильтровать по тегу",
 
   // ── Response ──────────────────────────────────────────────────────────────
-  "response.controls_accept_header": "Управляет заголовком Accept.",
+  "response.controls_accept_header_prefix": "Управляет заголовком ",
+  "response.controls_accept_header_suffix": ".",
 
   // ── Topbar ────────────────────────────────────────────────────────────────
   "topbar.select_definition": "Выбрать определение",

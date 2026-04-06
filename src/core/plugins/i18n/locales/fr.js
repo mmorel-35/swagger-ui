@@ -97,7 +97,8 @@ const fr = {
   "placeholder.filter_by_tag": "Filtrer par étiquette",
 
   // ── Response ──────────────────────────────────────────────────────────────
-  "response.controls_accept_header": "Contrôle l'en-tête Accept.",
+  "response.controls_accept_header_prefix": "Contrôle l'en-tête ",
+  "response.controls_accept_header_suffix": ".",
 
   // ── Topbar ────────────────────────────────────────────────────────────────
   "topbar.select_definition": "Sélectionner une définition",

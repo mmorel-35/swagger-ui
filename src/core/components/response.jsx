@@ -212,7 +212,9 @@ export default class Response extends React.Component {
                 />
                 {controlsAcceptHeader ? (
                   <small className="response-control-media-type__accept-message">
-                    {t("response.controls_accept_header")}
+                    {t("response.controls_accept_header_prefix")}
+                    <code>Accept</code>
+                    {t("response.controls_accept_header_suffix")}
                   </small>
                 ) : null}
               </div>

@@ -97,7 +97,8 @@ const is = {
   "placeholder.filter_by_tag": "Sía eftir merki",
 
   // ── Response ──────────────────────────────────────────────────────────────
-  "response.controls_accept_header": "Stýrir Accept-hausi.",
+  "response.controls_accept_header_prefix": "Stýrir ",
+  "response.controls_accept_header_suffix": "-hausi.",
 
   // ── Topbar ────────────────────────────────────────────────────────────────
   "topbar.select_definition": "Velja skilgreiningu",

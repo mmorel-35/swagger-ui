@@ -97,7 +97,8 @@ const de = {
   "placeholder.filter_by_tag": "Nach Tag filtern",
 
   // ── Response ──────────────────────────────────────────────────────────────
-  "response.controls_accept_header": "Steuert den Accept-Header.",
+  "response.controls_accept_header_prefix": "Steuert den ",
+  "response.controls_accept_header_suffix": "-Header.",
 
   // ── Topbar ────────────────────────────────────────────────────────────────
   "topbar.select_definition": "Definition auswählen",
