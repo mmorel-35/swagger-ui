@@ -34,8 +34,7 @@ const activeStyle = {
   borderBottom: "none"
 }
 
-const RequestSnippets = ({ request, requestSnippetsSelectors, getComponent, t }) => {
-  const tFn = t || fallbackT
+const RequestSnippets = ({ request, requestSnippetsSelectors, getComponent, t = fallbackT }) => {
   const rootRef = useRef(null)
 
   const ArrowIcon = getComponent("ArrowUpIcon")
@@ -106,11 +105,11 @@ const RequestSnippets = ({ request, requestSnippetsSelectors, getComponent, t })
         <h4
           onClick={() => handleSetIsExpanded()}
           style={{ cursor: "pointer" }}
-        >{tFn("label.snippets")}</h4>
+        >{t("label.snippets")}</h4>
         <button
           onClick={() => handleSetIsExpanded()}
           style={{ border: "none", background: "none" }}
-          title={isExpanded ? tFn("aria.collapse_operation") : tFn("aria.expand_operation")}
+          title={isExpanded ? t("aria.collapse_operation") : t("aria.expand_operation")}
         >
           {isExpanded ? <ArrowDownIcon className="arrow" width="10" height="10" /> : <ArrowIcon className="arrow" width="10" height="10" />}
         </button>

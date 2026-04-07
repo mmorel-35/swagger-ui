@@ -14,6 +14,10 @@ export default class Auths extends React.Component {
     t: PropTypes.func,
   }
 
+  static defaultProps = {
+    t: fallbackT,
+  }
+
   constructor(props, context) {
     super(props, context)
 
@@ -58,7 +62,6 @@ export default class Auths extends React.Component {
 
   render() {
     let { definitions, getComponent, authSelectors, errSelectors, t } = this.props
-    const tFn = t || fallbackT
     const AuthItem = getComponent("AuthItem")
     const Oauth2 = getComponent("oauth2", true)
     const Button = getComponent("Button")
@@ -92,10 +95,10 @@ export default class Auths extends React.Component {
             }
             <div className="auth-btn-wrapper">
               {
-                nonOauthDefinitions.size === authorizedAuth.size ? <Button className="btn modal-btn auth" onClick={ this.logoutClick } aria-label={tFn("aria.remove_authorization")}>{tFn("button.logout")}</Button>
-              : <Button type="submit" className="btn modal-btn auth authorize" aria-label={tFn("aria.apply_credentials")}>{tFn("button.authorize")}</Button>
+                nonOauthDefinitions.size === authorizedAuth.size ? <Button className="btn modal-btn auth" onClick={ this.logoutClick } aria-label={t("aria.remove_authorization")}>{t("button.logout")}</Button>
+              : <Button type="submit" className="btn modal-btn auth authorize" aria-label={t("aria.apply_credentials")}>{t("button.authorize")}</Button>
               }
-              <Button className="btn modal-btn auth btn-done" onClick={ this.close }>{tFn("button.close")}</Button>
+              <Button className="btn modal-btn auth btn-done" onClick={ this.close }>{t("button.close")}</Button>
             </div>
           </form>
         }
@@ -103,8 +106,8 @@ export default class Auths extends React.Component {
         {
           oauthDefinitions && oauthDefinitions.size ? <div>
           <div className="scope-def">
-            <p>{tFn("auth.scopes_description")}</p>
-            <p>{tFn("auth.scopes_required")}</p>
+            <p>{t("auth.scopes_description")}</p>
+            <p>{t("auth.scopes_required")}</p>
           </div>
             {
               definitions.filter( schema => schema.get("type") === "oauth2")

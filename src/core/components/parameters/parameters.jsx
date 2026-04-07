@@ -44,6 +44,7 @@ export default class Parameters extends Component {
     allowTryItOut: true,
     onChangeKey: [],
     specPath: [],
+    t: fallbackT,
   }
 
   onChange = (param, value, isXml) => {
@@ -114,7 +115,6 @@ export default class Parameters extends Component {
       operation,
       t,
     } = this.props
-    t = t || fallbackT
 
     const ParameterRow = getComponent("parameterRow")
     const TryItOutButton = getComponent("TryItOutButton")

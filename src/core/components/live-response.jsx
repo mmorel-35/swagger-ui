@@ -41,6 +41,10 @@ export default class LiveResponse extends React.Component {
     t: PropTypes.func,
   }
 
+  static defaultProps = {
+    t: fallbackT,
+  }
+
   shouldComponentUpdate(nextProps) {
     // BUG: props.response is always coming back as a new Immutable instance
     // same issue as responses.jsx (tryItOutResponse)
@@ -51,8 +55,7 @@ export default class LiveResponse extends React.Component {
   }
 
   render() {
-    const { response, getComponent, getConfigs, displayRequestDuration, specSelectors, path, method, t: tProp } = this.props
-    const t = tProp || fallbackT
+    const { response, getComponent, getConfigs, displayRequestDuration, specSelectors, path, method, t } = this.props
     const { showMutatedRequest, requestSnippetsEnabled } = getConfigs()
 
     const curlRequest = showMutatedRequest ? specSelectors.mutatedRequestFor(path, method) : specSelectors.requestFor(path, method)

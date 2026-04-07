@@ -14,10 +14,12 @@ export default class Errors extends React.Component {
     t: PropTypes.func,
   }
 
+  static defaultProps = {
+    t: fallbackT,
+  }
+
   render() {
     let { editorActions, errSelectors, layoutSelectors, layoutActions, getComponent, t } = this.props
-    t = t || fallbackT
-
     const Collapse = getComponent("Collapse")
 
     if(editorActions && editorActions.jumpToLine) {

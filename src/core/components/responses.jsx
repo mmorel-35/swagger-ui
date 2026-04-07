@@ -29,7 +29,8 @@ export default class Responses extends React.Component {
   static defaultProps = {
     tryItOutResponse: null,
     produces: fromJS(["application/json"]),
-    displayRequestDuration: false
+    displayRequestDuration: false,
+    t: fallbackT,
   }
 
   // These performance-enhancing checks were disabled as part of Multiple Examples
@@ -77,7 +78,6 @@ export default class Responses extends React.Component {
       oas3Actions,
       t,
     } = this.props
-    t = t || fallbackT
     let defaultCode = defaultStatusCode( responses )
 
     const ContentType = getComponent( "contentType" )

@@ -21,6 +21,10 @@ export default class ResponseBody extends React.PureComponent {
     t: PropTypes.func,
   }
 
+  static defaultProps = {
+    t: fallbackT,
+  }
+
   updateParsedContent = (prevContent) => {
     const { content } = this.props
 
@@ -53,7 +57,6 @@ export default class ResponseBody extends React.PureComponent {
 
   render() {
     let { content, contentType, url, headers={}, getComponent, t } = this.props
-    t = t || fallbackT
     const { parsedContent } = this.state
     const HighlightCode = getComponent("HighlightCode", true)
     const downloadName = "response_" + new Date().getTime()

@@ -51,7 +51,8 @@ export default class Response extends React.Component {
 
   static defaultProps = {
     response: fromJS({}),
-    onContentTypeChange: () => {}
+    onContentTypeChange: () => {},
+    t: fallbackT,
   }
 
   _onContentTypeChange = (value) => {
@@ -91,7 +92,6 @@ export default class Response extends React.Component {
       oas3Actions,
       t,
     } = this.props
-    t = t || fallbackT
 
     let { inferSchema, getSampleSchema } = fn
     let isOAS3 = specSelectors.isOAS3()

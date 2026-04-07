@@ -16,6 +16,10 @@ export default class Models extends Component {
     t: PropTypes.func,
   }
 
+  static defaultProps = {
+    t: fallbackT,
+  }
+
   getSchemaBasePath = () => {
     const isOAS3 = this.props.specSelectors.isOAS3()
     return isOAS3 ? ["components", "schemas"] : ["definitions"]
@@ -48,7 +52,6 @@ export default class Models extends Component {
 
   render(){
     let { specSelectors, getComponent, layoutSelectors, layoutActions, getConfigs, t } = this.props
-    const tFn = t || fallbackT
     let definitions = specSelectors.definitions()
     let { docExpansion, defaultModelsExpandDepth } = getConfigs()
     if (!definitions.size || defaultModelsExpandDepth < 0) return null
@@ -71,7 +74,7 @@ export default class Models extends Component {
           className="models-control"
           onClick={() => layoutActions.show(specPathBase, !showModels)}
         >
-          <span>{isOAS3 ? tFn("label.schemas") : tFn("label.models")}</span>
+          <span>{isOAS3 ? t("label.schemas") : t("label.models")}</span>
           {showModels ? <ArrowUpIcon /> : <ArrowDownIcon />}
         </button>
       </h4>

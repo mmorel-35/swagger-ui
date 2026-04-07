@@ -12,10 +12,12 @@ export default class Headers extends React.Component {
     t: PropTypes.func,
   }
 
+  static defaultProps = {
+    t: fallbackT,
+  }
+
   render() {
     let { headers, getComponent, t } = this.props
-    t = t || fallbackT
-
     const Property = getComponent("Property")
     const Markdown = getComponent("Markdown", true)
 

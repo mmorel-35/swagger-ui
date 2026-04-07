@@ -28,6 +28,7 @@ export default class ParamBody extends PureComponent {
     param: fromJS({}),
     onChange: NOOP,
     onChangeConsumes: NOOP,
+    t: fallbackT,
   }
 
   constructor(props, context) {
@@ -102,7 +103,6 @@ export default class ParamBody extends PureComponent {
       getComponent,
       t,
     } = this.props
-    const tFn = t || fallbackT
 
     const Button = getComponent("Button")
     const TextArea = getComponent("TextArea")
@@ -136,18 +136,18 @@ export default class ParamBody extends PureComponent {
             !isExecute ? null
                        : <div className="body-param-edit">
                         <Button className={isEditBox ? "btn cancel body-param__example-edit" : "btn edit body-param__example-edit"}
-                                 onClick={this.toggleIsEditBox}>{ isEditBox ? tFn("button.cancel") : tFn("button.edit")}
+                                 onClick={this.toggleIsEditBox}>{ isEditBox ? t("button.cancel") : t("button.edit")}
                          </Button>
                          </div>
           }
           <label htmlFor={controlId}>
-            <span>{tFn("label.parameter_content_type")}</span>
+            <span>{t("label.parameter_content_type")}</span>
             <ContentType
               value={ consumesValue }
               contentTypes={ consumes }
               onChange={onChangeConsumes}
               className="body-param-content-type"
-              ariaLabel={tFn("label.parameter_content_type")}
+              ariaLabel={t("label.parameter_content_type")}
               controlId={controlId}
             />
           </label>

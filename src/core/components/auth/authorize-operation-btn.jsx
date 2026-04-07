@@ -10,6 +10,10 @@ export default class AuthorizeOperationBtn extends React.Component {
       t: PropTypes.func,
     }
 
+    static defaultProps = {
+      t: fallbackT,
+    }
+
   onClick =(e) => {
     e.stopPropagation()
     let { onClick } = this.props
@@ -24,11 +28,10 @@ export default class AuthorizeOperationBtn extends React.Component {
 
     const LockAuthOperationIcon = getComponent("LockAuthOperationIcon", true)
     const UnlockAuthOperationIcon = getComponent("UnlockAuthOperationIcon", true)
-    const tFn = t || fallbackT
 
     return (
       <button className="authorization__btn"
-        aria-label={isAuthorized ? tFn("aria.authorization_button_locked") : tFn("aria.authorization_button_unlocked")}
+        aria-label={isAuthorized ? t("aria.authorization_button_locked") : t("aria.authorization_button_unlocked")}
         onClick={this.onClick}>
         {isAuthorized ? <LockAuthOperationIcon className="locked" /> : <UnlockAuthOperationIcon className="unlocked"/>}
       </button>

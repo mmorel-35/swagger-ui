@@ -15,6 +15,10 @@ export default class BasicAuth extends React.Component {
     t: PropTypes.func,
   }
 
+  static defaultProps = {
+    t: fallbackT,
+  }
+
   constructor(props, context) {
     super(props, context)
     let { schema, name } = this.props
@@ -51,7 +55,6 @@ export default class BasicAuth extends React.Component {
 
   render() {
     let { schema, getComponent, name, errSelectors, authSelectors, t } = this.props
-    const tFn = t || fallbackT
     const Input = getComponent("Input")
     const Row = getComponent("Row")
     const Col = getComponent("Col")
@@ -64,13 +67,13 @@ export default class BasicAuth extends React.Component {
 
     return (
       <div>
-        <h4>{tFn("auth.basic_authorization_title")}<JumpToPath path={path} /></h4>
-        { username && <h6>{tFn("auth.authorized")}</h6> }
+        <h4>{t("auth.basic_authorization_title")}<JumpToPath path={path} /></h4>
+        { username && <h6>{t("auth.authorized")}</h6> }
         <Row>
           <Markdown source={ schema.get("description") } />
         </Row>
         <Row>
-          <label htmlFor="auth_username">{tFn("auth.username_cap")}</label>
+          <label htmlFor="auth_username">{t("auth.username_cap")}</label>
           {
             username ? <code> { username } </code>
                      : <Col>
@@ -86,7 +89,7 @@ export default class BasicAuth extends React.Component {
           }
         </Row>
         <Row>
-          <label htmlFor="auth_password">{tFn("auth.password_cap")}</label>
+          <label htmlFor="auth_password">{t("auth.password_cap")}</label>
             {
               username ? <code> ****** </code>
                        : <Col>

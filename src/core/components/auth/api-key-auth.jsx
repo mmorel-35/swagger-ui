@@ -14,6 +14,10 @@ export default class ApiKeyAuth extends React.Component {
     t: PropTypes.func,
   }
 
+  static defaultProps = {
+    t: fallbackT,
+  }
+
   constructor(props, context) {
     super(props, context)
     let { name, schema } = this.props
@@ -43,7 +47,6 @@ export default class ApiKeyAuth extends React.Component {
 
   render() {
     let { schema, getComponent, errSelectors, name, authSelectors, t } = this.props
-    const tFn = t || fallbackT
     const Input = getComponent("Input")
     const Row = getComponent("Row")
     const Col = getComponent("Col")
@@ -60,18 +63,18 @@ export default class ApiKeyAuth extends React.Component {
           <code>{ name || schema.get("name") }</code>&nbsp;(apiKey)
           <JumpToPath path={path} />
         </h4>
-        { value && <h6>{tFn("auth.authorized")}</h6>}
+        { value && <h6>{t("auth.authorized")}</h6>}
         <Row>
           <Markdown source={ schema.get("description") } />
         </Row>
         <Row>
-          <p>{tFn("auth.api_key_name")} <code>{ schema.get("name") }</code></p>
+          <p>{t("auth.api_key_name")} <code>{ schema.get("name") }</code></p>
         </Row>
         <Row>
-          <p>{tFn("auth.api_key_in")} <code>{ schema.get("in") }</code></p>
+          <p>{t("auth.api_key_in")} <code>{ schema.get("in") }</code></p>
         </Row>
         <Row>
-          <label htmlFor="api_key_value">{tFn("auth.api_key_value")}</label>
+          <label htmlFor="api_key_value">{t("auth.api_key_value")}</label>
           {
             value ? <code> ****** </code>
                   : <Col>

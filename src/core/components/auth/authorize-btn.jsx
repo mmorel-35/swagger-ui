@@ -11,9 +11,12 @@ export default class AuthorizeBtn extends React.Component {
     t: PropTypes.func,
   }
 
+  static defaultProps = {
+    t: fallbackT,
+  }
+
   render() {
     let { isAuthorized, showPopup, onClick, getComponent, t } = this.props
-    t = t || fallbackT
 
     //must be moved out of button component
     const AuthorizationPopup = getComponent("authorizationPopup", true)
