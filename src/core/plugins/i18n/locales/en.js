@@ -100,7 +100,7 @@ const en = {
   // ── Response ──────────────────────────────────────────────────────────────
   "response.controls_accept_header_prefix": "Controls ",
   "response.controls_accept_header_suffix": " header.",
-  "response.json_parse_error": "can't parse JSON.  Raw result:\n\n",
+  "response.json_parse_error": "Can't parse JSON.  Raw result:\n\n",
   "response.no_blob_support":
     "Download headers detected but your browser does not support downloading binary via XHR (Blob).",
   "response.unrecognized_type_display_as_text":

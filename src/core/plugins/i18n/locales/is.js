@@ -100,7 +100,7 @@ const is = {
   "response.controls_accept_header_prefix": "Stýrir ",
   "response.controls_accept_header_suffix": "-hausi.",
   "response.json_parse_error":
-    "Ekki tókst að þátta JSON.  Hrátt niðurstaðan:\n\n",
+    "Ekki tókst að þátta JSON.  Hrá niðurstaða:\n\n",
   "response.no_blob_support":
     "Niðurhalshaus greindir, en vafrinn þinn styður ekki niðurhal á tvíundagögnum í gegnum XHR (Blob).",
   "response.unrecognized_type_display_as_text":
