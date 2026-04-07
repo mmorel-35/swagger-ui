@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import ImPropTypes from "react-immutable-proptypes"
 import { fallbackT } from "core/plugins/i18n/fn"
 
-const Headers = ( { headers, t = fallbackT } )=>{
+const Headers = ( { headers, t } )=>{
   return (
     <div>
       <h5>{t("label.response_headers")}</h5>
@@ -15,7 +15,11 @@ Headers.propTypes = {
   t: PropTypes.func,
 }
 
-const Duration = ( { duration, t = fallbackT } ) => {
+Headers.defaultProps = {
+  t: fallbackT,
+}
+
+const Duration = ( { duration, t } ) => {
   return (
     <div>
       <h5>{t("label.request_duration")}</h5>
@@ -26,6 +30,10 @@ const Duration = ( { duration, t = fallbackT } ) => {
 Duration.propTypes = {
   duration: PropTypes.number.isRequired,
   t: PropTypes.func,
+}
+
+Duration.defaultProps = {
+  t: fallbackT,
 }
 
 

@@ -64,7 +64,7 @@ export default class Errors extends React.Component {
     }
 }
 
-const ThrownErrorItem = ( { error, jumpToLine, t = fallbackT } ) => {
+const ThrownErrorItem = ( { error, jumpToLine, t } ) => {
   if(!error) {
     return null
   }
@@ -89,7 +89,7 @@ const ThrownErrorItem = ( { error, jumpToLine, t = fallbackT } ) => {
     )
   }
 
-const SpecErrorItem = ( { error, jumpToLine = null, t = fallbackT } ) => {
+const SpecErrorItem = ( { error, jumpToLine, t } ) => {
   let locationMessage = null
 
   if(error.get("path")) {
@@ -132,8 +132,17 @@ ThrownErrorItem.propTypes = {
   t: PropTypes.func,
 }
 
+ThrownErrorItem.defaultProps = {
+  t: fallbackT,
+}
+
 SpecErrorItem.propTypes = {
   error: PropTypes.object.isRequired,
   jumpToLine: PropTypes.func,
   t: PropTypes.func,
+}
+
+SpecErrorItem.defaultProps = {
+  jumpToLine: null,
+  t: fallbackT,
 }
