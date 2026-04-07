@@ -23,7 +23,7 @@ export default class ParamBody extends PureComponent {
     t: PropTypes.func,
   }
 
-  static defaultProp = {
+  static defaultProps = {
     consumes: fromJS(["application/json"]),
     param: fromJS({}),
     onChange: NOOP,
@@ -112,7 +112,7 @@ export default class ParamBody extends PureComponent {
     let parameter = specSelectors ? specSelectors.parameterWithMetaByIdentity(pathMethod, param) : param
     let errors = parameter.get("errors", List())
     let consumesValue = specSelectors.contentTypeValues(pathMethod).get("requestContentType")
-    let consumes = this.props.consumes && this.props.consumes.size ? this.props.consumes : ParamBody.defaultProp.consumes
+    let consumes = this.props.consumes && this.props.consumes.size ? this.props.consumes : ParamBody.defaultProps.consumes
 
     let { value, isEditBox } = this.state
     let language = null
