@@ -99,6 +99,13 @@ const ko = {
   // ── Response ──────────────────────────────────────────────────────────────
   "response.controls_accept_header_prefix": "",
   "response.controls_accept_header_suffix": " 헤더를 제어합니다.",
+  "response.json_parse_error": "JSON을 파싱할 수 없습니다.  원시 결과:\n\n",
+  "response.no_blob_support":
+    "다운로드 헤더가 감지되었지만 브라우저가 XHR (Blob)을 통한 바이너리 다운로드를 지원하지 않습니다.",
+  "response.unrecognized_type_display_as_text":
+    "인식되지 않는 응답 유형입니다. 내용을 텍스트로 표시합니다.",
+  "response.unrecognized_type_unable_to_display":
+    "인식되지 않는 응답 유형입니다. 표시할 수 없습니다.",
 
   // ── Topbar ────────────────────────────────────────────────────────────────
   "topbar.select_definition": "정의 선택",

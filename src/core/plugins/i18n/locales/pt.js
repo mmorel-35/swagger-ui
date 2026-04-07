@@ -99,6 +99,14 @@ const pt = {
   // ── Response ──────────────────────────────────────────────────────────────
   "response.controls_accept_header_prefix": "Controla o cabeçalho ",
   "response.controls_accept_header_suffix": ".",
+  "response.json_parse_error":
+    "Não foi possível analisar o JSON.  Resultado bruto:\n\n",
+  "response.no_blob_support":
+    "Cabeçalhos de download detectados, mas seu navegador não suporta download de dados binários via XHR (Blob).",
+  "response.unrecognized_type_display_as_text":
+    "Tipo de resposta não reconhecido; exibindo conteúdo como texto.",
+  "response.unrecognized_type_unable_to_display":
+    "Tipo de resposta não reconhecido; não é possível exibir.",
 
   // ── Topbar ────────────────────────────────────────────────────────────────
   "topbar.select_definition": "Selecionar uma definição",

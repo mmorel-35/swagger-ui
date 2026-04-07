@@ -99,6 +99,13 @@ const zh = {
   // ── Response ──────────────────────────────────────────────────────────────
   "response.controls_accept_header_prefix": "控制 ",
   "response.controls_accept_header_suffix": " 请求头。",
+  "response.json_parse_error": "无法解析 JSON。原始结果：\n\n",
+  "response.no_blob_support":
+    "检测到下载标头，但您的浏览器不支持通过 XHR (Blob) 下载二进制文件。",
+  "response.unrecognized_type_display_as_text":
+    "无法识别的响应类型；将内容显示为文本。",
+  "response.unrecognized_type_unable_to_display":
+    "无法识别的响应类型；无法显示。",
 
   // ── Topbar ────────────────────────────────────────────────────────────────
   "topbar.select_definition": "选择一个定义",

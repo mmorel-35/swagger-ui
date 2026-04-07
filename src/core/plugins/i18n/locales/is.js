@@ -99,6 +99,14 @@ const is = {
   // ── Response ──────────────────────────────────────────────────────────────
   "response.controls_accept_header_prefix": "Stýrir ",
   "response.controls_accept_header_suffix": "-hausi.",
+  "response.json_parse_error":
+    "Ekki tókst að þátta JSON.  Hrátt niðurstaðan:\n\n",
+  "response.no_blob_support":
+    "Niðurhalshaus greindir, en vafrinn þinn styður ekki niðurhal á tvíundagögnum í gegnum XHR (Blob).",
+  "response.unrecognized_type_display_as_text":
+    "Óþekkt svargerð; sýni efni sem texta.",
+  "response.unrecognized_type_unable_to_display":
+    "Óþekkt svargerð; get ekki sýnt.",
 
   // ── Topbar ────────────────────────────────────────────────────────────────
   "topbar.select_definition": "Velja skilgreiningu",

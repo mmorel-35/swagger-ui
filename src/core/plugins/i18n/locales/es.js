@@ -100,6 +100,14 @@ const es = {
   // ── Response ──────────────────────────────────────────────────────────────
   "response.controls_accept_header_prefix": "Controla la cabecera ",
   "response.controls_accept_header_suffix": ".",
+  "response.json_parse_error":
+    "No se puede analizar el JSON.  Resultado sin formato:\n\n",
+  "response.no_blob_support":
+    "Encabezados de descarga detectados, pero su navegador no es compatible con la descarga de datos binarios mediante XHR (Blob).",
+  "response.unrecognized_type_display_as_text":
+    "Tipo de respuesta no reconocido; mostrando contenido como texto.",
+  "response.unrecognized_type_unable_to_display":
+    "Tipo de respuesta no reconocido; no se puede mostrar.",
 
   // ── Topbar ────────────────────────────────────────────────────────────────
   "topbar.select_definition": "Seleccionar una definición",

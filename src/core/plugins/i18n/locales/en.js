@@ -100,6 +100,13 @@ const en = {
   // ── Response ──────────────────────────────────────────────────────────────
   "response.controls_accept_header_prefix": "Controls ",
   "response.controls_accept_header_suffix": " header.",
+  "response.json_parse_error": "can't parse JSON.  Raw result:\n\n",
+  "response.no_blob_support":
+    "Download headers detected but your browser does not support downloading binary via XHR (Blob).",
+  "response.unrecognized_type_display_as_text":
+    "Unrecognized response type; displaying content as text.",
+  "response.unrecognized_type_unable_to_display":
+    "Unrecognized response type; unable to display.",
 
   // ── Topbar ────────────────────────────────────────────────────────────────
   "topbar.select_definition": "Select a definition",

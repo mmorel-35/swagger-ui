@@ -99,6 +99,14 @@ const de = {
   // ── Response ──────────────────────────────────────────────────────────────
   "response.controls_accept_header_prefix": "Steuert den ",
   "response.controls_accept_header_suffix": "-Header.",
+  "response.json_parse_error":
+    "JSON konnte nicht verarbeitet werden.  Rohergebnis:\n\n",
+  "response.no_blob_support":
+    "Download-Header erkannt, aber Ihr Browser unterstützt kein Herunterladen von Binärdaten via XHR (Blob).",
+  "response.unrecognized_type_display_as_text":
+    "Unbekannter Antworttyp; Inhalt wird als Text angezeigt.",
+  "response.unrecognized_type_unable_to_display":
+    "Unbekannter Antworttyp; kann nicht angezeigt werden.",
 
   // ── Topbar ────────────────────────────────────────────────────────────────
   "topbar.select_definition": "Definition auswählen",

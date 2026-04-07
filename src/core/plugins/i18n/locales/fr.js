@@ -99,6 +99,14 @@ const fr = {
   // ── Response ──────────────────────────────────────────────────────────────
   "response.controls_accept_header_prefix": "Contrôle l'en-tête ",
   "response.controls_accept_header_suffix": ".",
+  "response.json_parse_error":
+    "Impossible d'analyser le JSON.  Résultat brut\u00a0:\n\n",
+  "response.no_blob_support":
+    "En-têtes de téléchargement détectés, mais votre navigateur ne prend pas en charge le téléchargement de données binaires via XHR (Blob).",
+  "response.unrecognized_type_display_as_text":
+    "Type de réponse non reconnu\u00a0; affichage du contenu en texte.",
+  "response.unrecognized_type_unable_to_display":
+    "Type de réponse non reconnu\u00a0; impossible d'afficher.",
 
   // ── Topbar ────────────────────────────────────────────────────────────────
   "topbar.select_definition": "Sélectionner une définition",

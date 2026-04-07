@@ -99,6 +99,14 @@ const ru = {
   // ── Response ──────────────────────────────────────────────────────────────
   "response.controls_accept_header_prefix": "Управляет заголовком ",
   "response.controls_accept_header_suffix": ".",
+  "response.json_parse_error":
+    "Не удаётся разобрать JSON.  Необработанный результат:\n\n",
+  "response.no_blob_support":
+    "Обнаружены заголовки загрузки, но ваш браузер не поддерживает загрузку двоичных данных через XHR (Blob).",
+  "response.unrecognized_type_display_as_text":
+    "Нераспознанный тип ответа; содержимое отображается как текст.",
+  "response.unrecognized_type_unable_to_display":
+    "Нераспознанный тип ответа; отображение невозможно.",
 
   // ── Topbar ────────────────────────────────────────────────────────────────
   "topbar.select_definition": "Выбрать определение",
