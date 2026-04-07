@@ -5,7 +5,7 @@ import React, { useCallback, useEffect } from "react"
 import PropTypes from "prop-types"
 import classNames from "classnames"
 
-const SCHEMAS_PATH = ["components", "schemas"]
+const SCHEMAS_PATH = Object.freeze(["components", "schemas"])
 
 const Models = ({
   specActions,
@@ -42,7 +42,7 @@ const Models = ({
     if (isOpenAndExpanded && !isResolved) {
       specActions.requestResolvedSubtree(schemasPath)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- intentionally only re-runs when isOpen/defaultModelsExpandDepth change; the other captured values (schemas, specSelectors, layoutSelectors, specActions) are plugin objects whose identity changes on every render but whose logic should not trigger this effect
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- intentionally watches only isOpen/defaultModelsExpandDepth; plugin objects have unstable identity but stable behavior
   }, [isOpen, defaultModelsExpandDepth])
 
   /**
