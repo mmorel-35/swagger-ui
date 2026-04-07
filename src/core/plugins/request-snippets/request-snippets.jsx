@@ -34,7 +34,7 @@ const activeStyle = {
   borderBottom: "none"
 }
 
-const RequestSnippets = ({ request, requestSnippetsSelectors, getComponent, t = fallbackT }) => {
+const RequestSnippets = ({ request, requestSnippetsSelectors, getComponent, t }) => {
   const rootRef = useRef(null)
 
   const ArrowIcon = getComponent("ArrowUpIcon")
@@ -160,6 +160,10 @@ RequestSnippets.propTypes = {
   getComponent: PropTypes.func.isRequired,
   requestSnippetsActions: PropTypes.object,
   t: PropTypes.func,
+}
+
+RequestSnippets.defaultProps = {
+  t: fallbackT,
 }
 
 export default RequestSnippets
